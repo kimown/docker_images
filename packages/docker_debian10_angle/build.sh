@@ -4,14 +4,28 @@ set -e
 
 DIR=`pwd`
 
+
+setProxy(){
+    export http_proxy=$(my_http_proxy)  https_proxy=$(my_http_proxy)
+    echo "setProxy"
+}
+
+unsetProxy(){
+    unset http_proxy https_proxy
+    echo "unsetProxy"
+}
+
 echo "build.sh"
 apt update 
 apt-get install sudo lsb-release -y
 
+
+setProxy
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH="$PATH:$PWD/depot_tools"
 echo "export PATH=$PWD/depot_tools:$PATH" >>~/.bashrc
 source ~/.bashrc
+
 
 git clone https://github.com/kimown/angle.git
 cd angle
@@ -24,8 +38,9 @@ gclient sync
 
 git checkout mybranch
 gclient sync
+
+unsetProxy
 ./build/install-build-deps.sh --no-arm --no-chromeos-fonts
-vi ./build/install-build-deps.sh
 
 gn gen out/Debug
 cat <<EOF > out/Debug/args.gn
