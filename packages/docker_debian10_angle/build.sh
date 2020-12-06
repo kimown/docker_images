@@ -58,8 +58,14 @@ build_angle_deqp_tests = false
 EOF
 
 gn args out/Debug/
+setProxy
 ninja -C out/Debug
 
-./out/Debug/angle_end2end_tests
+./out/Debug/angle_end2end_tests || echo "test"
 
 python2 scripts/run_code_generation.py
+
+#cd ..
+#tar -czvf angle-linux-x64.tar.gz angle/out/Debug/*.so angle/include/
+#npm i http-server -g
+
