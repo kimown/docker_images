@@ -18,4 +18,4 @@ net.createServer(function (from) {
 }).listen(8888, '0.0.0.0')
 
 // pm2 start proxy.js
-// curl -x 0.0.0.0:8888 ip.me
+// curl -x localhost:8888 ip.me
