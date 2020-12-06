@@ -36,9 +36,6 @@ python scripts/bootstrap.py
 gclient sync
 ./tools/flex-bison/linux/bison --help
 
-git checkout master
-gclient sync
-
 git checkout mybranch
 gclient sync
 
