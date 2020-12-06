@@ -15,7 +15,7 @@ net.createServer(function (from) {
   })
   from.pipe(to)
   to.pipe(from)
-}).listen('0.0.0.0', 8888)
+}).listen(8888, '0.0.0.0')
 
-// pm2 start proxy.js && cat /root/.pm2/logs/proxy-out.log
-// curl -x localhost:8888 ip.me
+// pm2 start proxy.js
+// curl -x 0.0.0.0:8888 ip.me
