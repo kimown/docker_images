@@ -8,6 +8,8 @@ DIR=`pwd`
 setProxy(){
     export http_proxy=${my_http_proxy}  https_proxy=${my_http_proxy}
     echo "setProxy"
+    echo $http_proxy
+    echo $https_proxy
 }
 
 unsetProxy(){
