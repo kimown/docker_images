@@ -3,7 +3,7 @@
 set -e
 
 DIR=`pwd`
-
+env
 
 setProxy(){
     export http_proxy=${my_http_proxy}  https_proxy=${my_http_proxy}
