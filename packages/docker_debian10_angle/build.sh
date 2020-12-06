@@ -7,6 +7,7 @@ env
 export my_http_proxy=localhost:8888
 
 setProxy(){
+#    export http_proxy=localhost:8888  https_proxy=localhost:8888
     export http_proxy=${my_http_proxy}  https_proxy=${my_http_proxy}
     echo "setProxy"
     echo $http_proxy
@@ -20,7 +21,6 @@ unsetProxy(){
 
 echo "build.sh"
 apt update 
-apt-get install sudo lsb-release -y
 
 
 setProxy
@@ -36,18 +36,22 @@ python scripts/bootstrap.py
 gclient sync
 ./tools/flex-bison/linux/bison --help
 
+git checkout master
+gclient sync
+
 git checkout mybranch
 gclient sync
 
 unsetProxy
-./build/install-build-deps.sh --no-arm --no-chromeos-fonts
+apt-get install sudo lsb-release -y
+./build/install-build-deps.sh --no-arm --no-chromeos-fonts || echo "no"
 
 gn gen out/Debug
 cat <<EOF > out/Debug/args.gn
 angle_shared_libvulkan = true
 angle_enable_vulkan = true
 angle_enable_vulkan_validation_layers = true
-angle_enable_gl = false
+angle_enable_gl = true
 angle_enable_swiftshader = false
 enable_dsyms = false
 build_angle_deqp_tests = false
