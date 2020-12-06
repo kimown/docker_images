@@ -4,6 +4,7 @@ set -e
 
 DIR=`pwd`
 env
+export my_http_proxy=localhost:8888
 
 setProxy(){
     export http_proxy=${my_http_proxy}  https_proxy=${my_http_proxy}
