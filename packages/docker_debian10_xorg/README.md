@@ -4,6 +4,8 @@ docker build -t docker_debian10_xorg:latest .
 
 docker run --privileged -it docker_debian10_xorg /bin/bash
 cd docker_debian10_xorg
+pm2 start build.js
+
 #验证tty写权限
 echo '11' >/dev/tty0
 
