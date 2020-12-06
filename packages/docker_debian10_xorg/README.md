@@ -1,7 +1,17 @@
 # run
 ```shell
 docker build -t docker_debian10_xorg:latest .
+
 docker run --privileged -it docker_debian10_xorg /bin/bash
+cd docker_debian10_xorg
+#验证tty写权限
+echo '11' >/dev/tty0
+
+# start DISPLAY
+glxgears
+export DISPLAY=:0
+glxgears
+
 
 
 ttyDevices=" "
