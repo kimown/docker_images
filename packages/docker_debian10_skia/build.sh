@@ -2,6 +2,7 @@
 
 set -e
 
+cd /docker_debian10_skia
 export DIR=`pwd`
 env
 cat my_http_proxy.txt
@@ -31,7 +32,6 @@ export PATH="$PATH:$PWD/depot_tools"
 echo "export PATH=$PWD/depot_tools:$PATH" >>~/.bashrc
 source ~/.bashrc
 
-cd /docker_debian10_skia
 git clone https://skia.googlesource.com/skia.git
 cd skia
 
