@@ -59,3 +59,5 @@ ninja -C out/Static skottie_tool
 ./out/Static/skottie2movie || echo "skottie2movie"
 ./out/Static/skottie_tool || echo "skottie_tool"
 
+echo "export PATH=$PWD/out/Static:$PATH" >>~/.bashrc
+source ~/.bashrc

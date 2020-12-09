@@ -44,18 +44,24 @@ void writeFile2(const SkBitmap& bmp1, int fStreamIndex){
     char buffer[2048];
     snprintf(buffer, sizeof(buffer), "frame_%d.bgra",fStreamIndex);
     //    FILE *f = fopen("frame_1.rgba", "w+b");
-    FILE *f = fopen(buffer, "w+b");
-    if (f != NULL) {
-        const size_t bytes_to_write = bmp1.height() * bmp1.rowBytes();
-
-        if (fwrite(bmp1.getPixels(), 1, bytes_to_write, f) != bytes_to_write) {
-            printf("[-] Unable to write %zu bytes to the output file, %s\n",bytes_to_write, buffer);
-        } else {
-            printf("[+] Successfully wrote %zu bytes , %s\n", bytes_to_write, buffer);
-        }
-        fclose(f);
+    if(getenv("stdout")){
+       const size_t bytes_to_write = bmp1.height() * bmp1.rowBytes();
+      fwrite(bmp1.getPixels(), 1, bytes_to_write, stdout);
+      fflush(stdout);
     } else {
-        printf("[-] Unable to open output file \n");
+        FILE *f = fopen(buffer, "w+b");
+        if (f != NULL) {
+            const size_t bytes_to_write = bmp1.height() * bmp1.rowBytes();
+    
+            if (fwrite(bmp1.getPixels(), 1, bytes_to_write, f) != bytes_to_write) {
+                SkDebugf("[-] Unable to write %zu bytes to the output file, %s\n",bytes_to_write, buffer);
+            } else {
+                SkDebugf("[+] Successfully wrote %zu bytes , %s\n", bytes_to_write, buffer);
+            }
+            fclose(f);
+        } else {
+            SkDebugf("[-] Unable to open output file \n");
+        }
     }
 }
 
@@ -63,9 +69,9 @@ int fStreamIndex = 1;
 
 void writePix(const SkPixmap& pm){
     SkBitmap bitmap;
-    printf("before installPixels\n");
+    SkDebugf("before installPixels\n");
     bool installed = bitmap.installPixels(pm);
-    printf("install " "%s" "successful\n", installed ? "" : "not ");
+    SkDebugf("install " "%s" "successful\n", installed ? "" : "not ");
     writeFile2(bitmap,fStreamIndex);
     fStreamIndex+=1;
 }
