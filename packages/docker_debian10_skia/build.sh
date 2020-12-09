@@ -37,7 +37,7 @@ git checkout 0922403dcdc6b9ea70d39149a3a67295034f14ca
 git checkout -b nodev1 0922403dcdc6b9ea70d39149a3a67295034f14ca
 git checkout nodev1
 
-cp $DIR/enable_gpu_render_skottie_v1/skottie2movie.cpp tools/skottie2movie.cpp
+cp /docker_debian10_skia/enable_gpu_render_skottie_v1/skottie2movie.cpp tools/skottie2movie.cpp
 
 python2 tools/git-sync-deps
 unsetProxy
