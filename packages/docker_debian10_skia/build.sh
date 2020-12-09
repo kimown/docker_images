@@ -4,7 +4,7 @@ set -e
 
 export DIR=`pwd`
 env
-export my_http_proxy=a=$(sed -n 1p  my_http_proxy.txt)
+export my_http_proxy=$(sed -n 1p  my_http_proxy.txt)
 
 setProxy(){
 #    export http_proxy=localhost:8888  https_proxy=localhost:8888
