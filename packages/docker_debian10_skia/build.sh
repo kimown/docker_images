@@ -2,7 +2,7 @@
 
 set -e
 
-DIR=`pwd`
+export DIR=`pwd`
 env
 export my_http_proxy=localhost:8888
 
