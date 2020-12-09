@@ -33,10 +33,6 @@ cd /docker_debian10_skia
 git clone https://skia.googlesource.com/skia.git
 cd skia
 
-git checkout 0922403dcdc6b9ea70d39149a3a67295034f14ca
-git checkout -b nodev1 0922403dcdc6b9ea70d39149a3a67295034f14ca
-git checkout nodev1
-
 cp /docker_debian10_skia/enable_gpu_render_skottie_v1/skottie2movie.cpp tools/skottie2movie.cpp
 
 #https://stackoverflow.com/questions/38378914/how-to-fix-git-error-rpc-failed-curl-56-gnutls
