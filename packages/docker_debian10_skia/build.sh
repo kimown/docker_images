@@ -52,8 +52,8 @@ python --version
 sudo apt -y install libavutil-dev libavformat-dev libswscale-dev libavcodec-dev
 pkg-config --libs libavcodec libavformat libswscale libavutil
 
-./ninja -C out/Static skottie2movie 
-./ninja -C out/Static skottie_tool
+ninja -C out/Static skottie2movie 
+ninja -C out/Static skottie_tool
 
 
 ./out/Static/skottie2movie || echo "skottie2movie"
