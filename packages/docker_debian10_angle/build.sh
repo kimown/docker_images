@@ -21,6 +21,7 @@ unsetProxy(){
 echo "build.sh"
 apt update 
 
+cd /docker_debian10_angle
 
 setProxy
 git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
