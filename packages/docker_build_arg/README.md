@@ -1,5 +1,5 @@
 ```shell
-export MY_HTTP_PROXY=http://10.20.30.2:1234
+echo "export MY_HTTP_PROXY=http://10.20.30.2:1234" >>~/.bashrc
 
 docker build -t docker_build_arg:latest --build-arg MY_HTTP_PROXY .
 
