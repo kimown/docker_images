@@ -56,7 +56,7 @@ enable_dsyms = false
 build_angle_deqp_tests = false
 EOF
 
-gn args out/Debug/
+#gn args out/Debug/
 setProxy
 ninja -C out/Debug
 
